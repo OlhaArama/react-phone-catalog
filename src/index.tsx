@@ -1,11 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import { App } from './App';
+import { createRoot } from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
+import { ProductsProvider } from './helpers/ProductsContext';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+import { App } from './App';
+import { ScrollToTop } from './helpers/ScrollToTop';
+
+createRoot(document.getElementById('root') as HTMLDivElement)
+  .render(
+    <Router>
+      <ProductsProvider>
+        <ScrollToTop />
+        <App />
+      </ProductsProvider>
+    </Router>,
+  );
